@@ -12,8 +12,6 @@ def main():
     root.mainloop()
 
 class SLAU:
-    z = 5
-
     def Reset(self):
         self.A1.delete(0, END)
         self.A2.delete(0, END)
@@ -54,6 +52,7 @@ class SLAU:
 
     def calc(self):
         global z
+
         self.X1.delete(0, END)
         self.X2.delete(0, END)
         self.X3.delete(0, END)
@@ -67,7 +66,7 @@ class SLAU:
                            [float(self.A5.get()), float(self.B5.get()), float(self.C5.get()), float(self.D5.get()), float(self.E5.get())]])
             M2 = np.linalg.inv(M1)
             M3 = np.array([float(self.R1.get()), float(self.R2.get()), float(self.R3.get()), float(self.R4.get()), float(self.R5.get())])
-            RES = np.round(M2.dot(M3), decimals=10)
+            RES = np.round(M2.dot(M3), decimals=2)
             self.X1.insert(0, RES[0])
             self.X2.insert(0, RES[1])
             self.X3.insert(0, RES[2])
@@ -77,14 +76,14 @@ class SLAU:
             M1 = np.array([[float(self.A1.get())]])
             M2 = np.linalg.inv(M1)
             M3 = np.array([float(self.R1.get())])
-            RES = np.round(M2.dot(M3), decimals=10)
+            RES = np.round(M2.dot(M3), decimals=2)
             self.X1.insert(0, RES[0])
         elif z == 2:
             M1 = np.array([[float(self.A1.get()), float(self.B1.get())],
                            [float(self.A2.get()), float(self.B2.get())]])
             M2 = np.linalg.inv(M1)
             M3 = np.array([float(self.R1.get()), float(self.R2.get())])
-            RES = np.round(M2.dot(M3), decimals=10)
+            RES = np.round(M2.dot(M3), decimals=2)
             self.X1.insert(0, RES[0])
             self.X2.insert(0, RES[1])
         elif z == 3:
@@ -93,7 +92,7 @@ class SLAU:
                            [float(self.A3.get()), float(self.B3.get()), float(self.C3.get())]])
             M2 = np.linalg.inv(M1)
             M3 = np.array([float(self.R1.get()), float(self.R2.get()), float(self.R3.get())])
-            RES = np.round(M2.dot(M3), decimals=10)
+            RES = np.round(M2.dot(M3), decimals=2)
             self.X1.insert(0, RES[0])
             self.X2.insert(0, RES[1])
             self.X3.insert(0, RES[2])
@@ -104,7 +103,7 @@ class SLAU:
                            [float(self.A4.get()), float(self.B4.get()), float(self.C4.get()), float(self.D4.get())]])
             M2 = np.linalg.inv(M1)
             M3 = np.array([float(self.R1.get()), float(self.R2.get()), float(self.R3.get()), float(self.R4.get())])
-            RES = np.round(M2.dot(M3), decimals=10)
+            RES = np.round(M2.dot(M3), decimals=2)
             self.X1.insert(0, RES[0])
             self.X2.insert(0, RES[1])
             self.X3.insert(0, RES[2])
@@ -292,252 +291,171 @@ class SLAU:
         self.X5.configure(state='normal')
 
     def __init__(self, top=None):
-        font7 = "-family {Comic Sans MS} -size 13 -weight normal "  \
+        global z
+        z=5
+        Comic = "-family {Comic Sans MS} -size 13 -weight normal "  \
             "-slant roman -underline 0 -overstrike 0"
-        top.geometry("800x500+494+404")
+        top.geometry("800x500")
         top.title("СЛАУ")
 
-        self.A1 = Entry(top)
+        self.A1 = Entry(top, font=Comic, justify=CENTER)
         self.A1.place(relx=0.06, rely=0.1,height=30, relwidth=0.07)
-        self.A1.configure(font=font7, justify=CENTER)
 
-        self.A2 = Entry(top)
+        self.A2 = Entry(top, font=Comic, justify=CENTER)
         self.A2.place(relx=0.06, rely=0.22,height=30, relwidth=0.07)
-        self.A2.configure(font=font7, justify=CENTER)
 
-        self.A3 = Entry(top)
+        self.A3 = Entry(top, font=Comic, justify=CENTER)
         self.A3.place(relx=0.06, rely=0.34,height=30, relwidth=0.07)
-        self.A3.configure(font=font7, justify=CENTER)
 
-        self.A4 = Entry(top)
+        self.A4 = Entry(top, font=Comic, justify=CENTER)
         self.A4.place(relx=0.06, rely=0.46,height=30, relwidth=0.07)
-        self.A4.configure(font=font7, justify=CENTER)
 
-        self.A5 = Entry(top)
+        self.A5 = Entry(top, font=Comic, justify=CENTER)
         self.A5.place(relx=0.06, rely=0.58,height=30, relwidth=0.07)
-        self.A5.configure(font=font7, justify=CENTER)
 
-        self.B1 = Entry(top)
+        self.B1 = Entry(top, font=Comic, justify=CENTER)
         self.B1.place(relx=0.16, rely=0.1,height=30, relwidth=0.07)
-        self.B1.configure(font=font7, justify=CENTER)
 
-        self.B2 = Entry(top)
+        self.B2 = Entry(top, font=Comic, justify=CENTER)
         self.B2.place(relx=0.16, rely=0.22,height=30, relwidth=0.07)
-        self.B2.configure(font=font7, justify=CENTER)
 
-        self.B3 = Entry(top)
+        self.B3 = Entry(top, font=Comic, justify=CENTER)
         self.B3.place(relx=0.16, rely=0.34,height=30, relwidth=0.07)
-        self.B3.configure(font=font7, justify=CENTER)
 
-        self.B4 = Entry(top)
+        self.B4 = Entry(top, font=Comic, justify=CENTER)
         self.B4.place(relx=0.16, rely=0.46,height=30, relwidth=0.07)
-        self.B4.configure(font=font7, justify=CENTER)
 
-        self.B5 = Entry(top)
+        self.B5 = Entry(top, font=Comic, justify=CENTER)
         self.B5.place(relx=0.16, rely=0.58,height=30, relwidth=0.07)
-        self.B5.configure(font=font7, justify=CENTER)
 
-        self.C1 = Entry(top)
+        self.C1 = Entry(top, font=Comic, justify=CENTER)
         self.C1.place(relx=0.26, rely=0.1,height=30, relwidth=0.07)
-        self.C1.configure(font=font7, justify=CENTER)
 
-        self.C2 = Entry(top)
+        self.C2 = Entry(top, font=Comic, justify=CENTER)
         self.C2.place(relx=0.26, rely=0.22,height=30, relwidth=0.07)
-        self.C2.configure(font=font7, justify=CENTER)
 
-        self.C3 = Entry(top)
+        self.C3 = Entry(top, font=Comic, justify=CENTER)
         self.C3.place(relx=0.26, rely=0.34,height=30, relwidth=0.07)
-        self.C3.configure(font=font7, justify=CENTER)
 
-        self.C4 = Entry(top)
+        self.C4 = Entry(top, font=Comic, justify=CENTER)
         self.C4.place(relx=0.26, rely=0.46,height=30, relwidth=0.07)
-        self.C4.configure(font=font7, justify=CENTER)
 
-        self.C5 = Entry(top)
+        self.C5 = Entry(top, font=Comic, justify=CENTER)
         self.C5.place(relx=0.26, rely=0.58,height=30, relwidth=0.07)
-        self.C5.configure(font=font7, justify=CENTER)
 
-        self.D1 = Entry(top)
+        self.D1 = Entry(top, font=Comic, justify=CENTER)
         self.D1.place(relx=0.36, rely=0.1,height=30, relwidth=0.07)
-        self.D1.configure(font=font7, justify=CENTER)
 
-        self.D2 = Entry(top)
+        self.D2 = Entry(top, font=Comic, justify=CENTER)
         self.D2.place(relx=0.36, rely=0.22,height=30, relwidth=0.07)
-        self.D2.configure(font=font7, justify=CENTER)
 
-        self.D3 = Entry(top)
+        self.D3 = Entry(top, font=Comic, justify=CENTER)
         self.D3.place(relx=0.36, rely=0.34,height=30, relwidth=0.07)
-        self.D3.configure(font=font7, justify=CENTER)
 
-        self.D4 = Entry(top)
+        self.D4 = Entry(top, font=Comic, justify=CENTER)
         self.D4.place(relx=0.36, rely=0.46,height=30, relwidth=0.07)
-        self.D4.configure(font=font7, justify=CENTER)
 
-        self.D5 = Entry(top)
+        self.D5 = Entry(top, font=Comic, justify=CENTER)
         self.D5.place(relx=0.36, rely=0.58,height=30, relwidth=0.07)
-        self.D5.configure(font=font7, justify=CENTER)
 
-        self.E1 = Entry(top)
+        self.E1 = Entry(top, font=Comic, justify=CENTER)
         self.E1.place(relx=0.46, rely=0.1,height=30, relwidth=0.07)
-        self.E1.configure(font=font7, justify=CENTER)
 
-        self.E2 = Entry(top)
+        self.E2 = Entry(top, font=Comic, justify=CENTER)
         self.E2.place(relx=0.46, rely=0.22,height=30, relwidth=0.07)
-        self.E2.configure(font=font7, justify=CENTER)
 
-        self.E3 = Entry(top)
+        self.E3 = Entry(top, font=Comic, justify=CENTER)
         self.E3.place(relx=0.46, rely=0.34,height=30, relwidth=0.07)
-        self.E3.configure(font=font7, justify=CENTER)
 
-        self.E4 = Entry(top)
+        self.E4 = Entry(top, font=Comic, justify=CENTER)
         self.E4.place(relx=0.46, rely=0.46,height=30, relwidth=0.07)
-        self.E4.configure(font=font7, justify=CENTER)
 
-        self.E5 = Entry(top)
+        self.E5 = Entry(top, font=Comic, justify=CENTER)
         self.E5.place(relx=0.46, rely=0.58,height=30, relwidth=0.07)
-        self.E5.configure(font=font7, justify=CENTER)
 
-        self.R1 = Entry(top)
+        self.R1 = Entry(top, font=Comic, justify=CENTER)
         self.R1.place(relx=0.63, rely=0.1,height=30, relwidth=0.07)
-        self.R1.configure(font=font7, justify=CENTER)
 
-        self.R2 = Entry(top)
+        self.R2 = Entry(top, font=Comic, justify=CENTER)
         self.R2.place(relx=0.63, rely=0.22,height=30, relwidth=0.07)
-        self.R2.configure(font=font7, justify=CENTER)
 
-        self.R3 = Entry(top)
+        self.R3 = Entry(top, font=Comic, justify=CENTER)
         self.R3.place(relx=0.63, rely=0.34,height=30, relwidth=0.07)
-        self.R3.configure(font=font7, justify=CENTER)
 
-        self.R4 = Entry(top)
+        self.R4 = Entry(top, font=Comic, justify=CENTER)
         self.R4.place(relx=0.63, rely=0.46,height=30, relwidth=0.07)
-        self.R4.configure(font=font7, justify=CENTER)
 
-        self.R5 = Entry(top)
+        self.R5 = Entry(top, font=Comic, justify=CENTER)
         self.R5.place(relx=0.63, rely=0.58,height=30, relwidth=0.07)
-        self.R5.configure(font=font7, justify=CENTER)
 
-        self.Button1 = Button(top)
+        self.Button1 = Button(top, font=Comic, text='''1''', command=self.make_1)
         self.Button1.place(relx=0.06, rely=0.86, height=34, width=57)
-        self.Button1.configure(font=font7)
-        self.Button1.configure(text='''1''', command=self.make_1)
 
-        self.Button2 = Button(top)
+        self.Button2 = Button(top, font=Comic, text='''2''', command=self.make_2)
         self.Button2.place(relx=0.16, rely=0.86, height=34, width=57)
-        self.Button2.configure(font=font7)
-        self.Button2.configure(text='''2''', command=self.make_2)
 
-        self.Button3 = Button(top)
+        self.Button3 = Button(top, font=Comic, text='''3''', command=self.make_3)
         self.Button3.place(relx=0.26, rely=0.86, height=34, width=57)
-        self.Button3.configure(font=font7)
-        self.Button3.configure(text='''3''', command=self.make_3)
 
-        self.Button4 = Button(top)
+        self.Button4 = Button(top, font=Comic,text='''4''', command=self.make_4)
         self.Button4.place(relx=0.36, rely=0.86, height=34, width=57)
-        self.Button4.configure(font=font7)
-        self.Button4.configure(text='''4''', command=self.make_4)
 
-        self.Button5 = Button(top)
+        self.Button5 = Button(top, font=Comic, text='''5''', command=self.make_5)
         self.Button5.place(relx=0.46, rely=0.86, height=34, width=57)
-        self.Button5.configure(font=font7)
-        self.Button5.configure(text='''5''', command=self.make_5)
 
-        self.size = Message(top)
+        self.size = Message(top, font=Comic, width=360, text='''Размер Матрицы''')
         self.size.place(relx=0.08, rely=0.76, relheight=0.07, relwidth=0.45)
-        self.size.configure(font=font7)
-        self.size.configure(text='''Размер Матрицы''')
-        self.size.configure(width=360)
 
-        self.ButtonR = Button(top)
+        self.ButtonR = Button(top, font=Comic, text='''Сбросить''', command=self.Reset)
         self.ButtonR.place(relx=0.78, rely=0.74, height=34, width=137)
-        self.ButtonR.configure(font=font7)
-        self.ButtonR.configure(text='''Сбросить''', command=self.Reset)
 
-        self.ButtonE = Button(top)
+        self.ButtonE = Button(top, font=Comic, text='''Решить''', command=self.calc)
         self.ButtonE.place(relx=0.78, rely=0.86, height=34, width=137)
-        self.ButtonE.configure(font=font7)
-        self.ButtonE.configure(text='''Решить''', command=self.calc)
 
-        self.MessagE = Message(top)
-        self.MessagE.place(relx=0.54, rely=0.1, relheight=0.07, relwidth=0.08)
-        self.MessagE.configure(font=font7)
-        self.MessagE.configure(text='''=''')
-        self.MessagE.configure(width=60)
+        self.MessagE_1 = Message(top, font=Comic, width=60, text='''=''')
+        self.MessagE_1.place(relx=0.54, rely=0.1, relheight=0.07, relwidth=0.08)
 
-        self.MessagE_22 = Message(top)
-        self.MessagE_22.place(relx=0.54, rely=0.22, relheight=0.07, relwidth=0.08)
-        self.MessagE_22.configure(font=font7)
-        self.MessagE_22.configure(text='''=''')
-        self.MessagE_22.configure(width=60)
+        self.MessagE_2 = Message(top, font=Comic, width=60, text='''=''')
+        self.MessagE_2.place(relx=0.54, rely=0.22, relheight=0.07, relwidth=0.08)
 
-        self.MessagE_23 = Message(top)
-        self.MessagE_23.place(relx=0.54, rely=0.34, relheight=0.07, relwidth=0.08)
-        self.MessagE_23.configure(font=font7)
-        self.MessagE_23.configure(text='''=''')
-        self.MessagE_23.configure(width=60)
+        self.MessagE_3 = Message(top, font=Comic, width=60, text='''=''')
+        self.MessagE_3.place(relx=0.54, rely=0.34, relheight=0.07, relwidth=0.08)
 
-        self.MessagE_24 = Message(top)
-        self.MessagE_24.place(relx=0.54, rely=0.46, relheight=0.07, relwidth=0.08)
-        self.MessagE_24.configure(font=font7)
-        self.MessagE_24.configure(text='''=''')
-        self.MessagE_24.configure(width=60)
+        self.MessagE_4 = Message(top, font=Comic, width=60, text='''=''')
+        self.MessagE_4.place(relx=0.54, rely=0.46, relheight=0.07, relwidth=0.08)
 
-        self.MessagE_25 = Message(top)
-        self.MessagE_25.place(relx=0.54, rely=0.58, relheight=0.07, relwidth=0.08)
-        self.MessagE_25.configure(font=font7)
-        self.MessagE_25.configure(text='''=''')
-        self.MessagE_25.configure(width=60)
+        self.MessagE_5 = Message(top, font=Comic, width=60, text='''=''')
+        self.MessagE_5.place(relx=0.54, rely=0.58, relheight=0.07, relwidth=0.08)
 
-        self.MessagX1 = Message(top)
+        self.MessagX1 = Message(top, font=Comic, width=60, text='''X1=''')
         self.MessagX1.place(relx=0.81, rely=0.1, relheight=0.07, relwidth=0.08)
-        self.MessagX1.configure(font=font7)
-        self.MessagX1.configure(text='''X1=''')
-        self.MessagX1.configure(width=60)
 
-        self.MessagX2 = Message(top)
+        self.MessagX2 = Message(top, font=Comic, width=60, text='''X2=''')
         self.MessagX2.place(relx=0.81, rely=0.22, relheight=0.07, relwidth=0.08)
-        self.MessagX2.configure(font=font7)
-        self.MessagX2.configure(text='''X2=''')
-        self.MessagX2.configure(width=60)
 
-        self.MessagX3 = Message(top)
+        self.MessagX3 = Message(top, font=Comic, width=60, text='''X3=''')
         self.MessagX3.place(relx=0.81, rely=0.34, relheight=0.07, relwidth=0.08)
-        self.MessagX3.configure(font=font7)
-        self.MessagX3.configure(text='''X3=''')
-        self.MessagX3.configure(width=60)
 
-        self.MessagX4 = Message(top)
+        self.MessagX4 = Message(top, font=Comic, width=60, text='''X4=''')
         self.MessagX4.place(relx=0.81, rely=0.46, relheight=0.07, relwidth=0.08)
-        self.MessagX4.configure(font=font7)
-        self.MessagX4.configure(text='''X4=''')
-        self.MessagX4.configure(width=60)
 
-        self.MessagX5 = Message(top)
+        self.MessagX5 = Message(top, font=Comic, width=60, text='''X5=''')
         self.MessagX5.place(relx=0.81, rely=0.58, relheight=0.07, relwidth=0.08)
-        self.MessagX5.configure(font=font7)
-        self.MessagX5.configure(text='''X5=''')
-        self.MessagX5.configure(width=60)
 
-        self.X1 = Entry(top)
+        self.X1 = Entry(top, font=Comic, justify=CENTER)
         self.X1.place(relx=0.89, rely=0.1,height=30, relwidth=0.07)
-        self.X1.configure(font=font7, justify=CENTER)
 
-        self.X2 = Entry(top)
+        self.X2 = Entry(top, font=Comic, justify=CENTER)
         self.X2.place(relx=0.89, rely=0.22,height=30, relwidth=0.07)
-        self.X2.configure(font=font7, justify=CENTER)
 
-        self.X3 = Entry(top)
+        self.X3 = Entry(top, font=Comic, justify=CENTER)
         self.X3.place(relx=0.89, rely=0.34,height=30, relwidth=0.07)
-        self.X3.configure(font=font7, justify=CENTER)
 
-        self.X4 = Entry(top)
+        self.X4 = Entry(top, font=Comic, justify=CENTER)
         self.X4.place(relx=0.89, rely=0.46,height=30, relwidth=0.07)
-        self.X4.configure(font=font7, justify=CENTER)
 
-        self.X5 = Entry(top)
+        self.X5 = Entry(top, font=Comic, justify=CENTER)
         self.X5.place(relx=0.89, rely=0.58,height=30, relwidth=0.07)
-        self.X5.configure(font=font7, justify=CENTER)
-
 
 if __name__ == '__main__':
     main()
