@@ -1,6 +1,8 @@
 __author__ = "Абельханов Р.Р."
 __copyright__ = "Copyright 2018, Rihan_Zer0"
-__email__ = "rinat-sonic@mail.ru"
+__email__ = "rihan_zero@vk.com"
+
+#Вообще не помню, как я всё это собирал и не понимаю, почему вы здесь...
 
 from tkinter import *
 import numpy as np
